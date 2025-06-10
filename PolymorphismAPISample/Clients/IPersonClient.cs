@@ -1,4 +1,4 @@
-﻿using PolymorphismAPISample.Models;
+using PolymorphismAPISample.Models;
 using PolymorphismSample.Models;
 using Refit;
 

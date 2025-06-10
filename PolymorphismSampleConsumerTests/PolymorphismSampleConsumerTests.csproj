@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\PolymorphismAPISample\PolymorphismAPISample.csproj" />
+		<ProjectReference Include="..\PolymorphismAPISample\PolymorphismAPISample.csproj" />
 	</ItemGroup>
 
 </Project>

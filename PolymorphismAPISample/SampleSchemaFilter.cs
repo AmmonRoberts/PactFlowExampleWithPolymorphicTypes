@@ -1,4 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;
 using PolymorphismAPISample.Models.Enums;
 using PolymorphismSample.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;

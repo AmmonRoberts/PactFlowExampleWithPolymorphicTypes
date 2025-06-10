@@ -143,10 +143,9 @@ public class Tests
 			AnotherEnum = AnotherEnum.AnotherThing
 		};
 
-		var serializedRequest = JsonSerializer.Serialize(request, _jsonSerializerOptions);
-
 		_pactBuilder
 			.UponReceiving("Some POST request, but different")
+				.Given("I manually changed the pact file to use enum index instead of string")
 				.WithRequest(HttpMethod.Post, "/people")
 				.WithBody(JsonSerializer.Serialize(request, _jsonSerializerOptions), "application/json; charset=utf-8")
 			.WillRespond()

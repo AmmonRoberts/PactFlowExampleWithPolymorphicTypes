@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PolymorphismAPISample, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/people": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPersonRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPersonRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPersonRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddPersonRequest": {
+        "type": "object",
+        "properties": {
+          "person": {
+            "$ref": "#/components/schemas/Person"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AnotherEnum": {
+        "enum": [
+          "AnotherThing",
+          "AnotherThing2"
+        ],
+        "type": "string"
+      },
+      "FavoriteFoodType": {
+        "enum": [
+          "WetFood",
+          "DryFood"
+        ],
+        "type": "string"
+      },
+      "Person": {
+        "type": "object",
+        "properties": {
+          "pets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Dog": {
+                      "type": "object",
+                      "properties": {
+                        "FavoriteFoodType": {
+                          "$ref": "#/components/schemas/FavoriteFoodType"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "Cat": {
+                      "type": "object",
+                      "properties": {
+                        "FavoriteFoodType": {
+                          "$ref": "#/components/schemas/FavoriteFoodType"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "nullable": true
+          },
+          "anotherEnum": {
+            "$ref": "#/components/schemas/AnotherEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "favoriteFoodType": {
+            "$ref": "#/components/schemas/FavoriteFoodType"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
