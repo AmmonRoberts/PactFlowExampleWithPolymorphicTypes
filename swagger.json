@@ -86,7 +86,7 @@
             "type": "array",
             "items": {
               "type": "object",
-              "oneOf": [
+              "allOf": [
                 {
                   "type": "object",
                   "properties": {

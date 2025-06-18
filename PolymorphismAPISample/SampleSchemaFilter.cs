@@ -15,7 +15,7 @@ public class SampleSchemaFilter : ISchemaFilter
 			schema.Items = new OpenApiSchema
 			{
 				Type = "object",
-				OneOf = new List<OpenApiSchema>
+				AllOf = new List<OpenApiSchema>
 				{
 					new OpenApiSchema
 					{
